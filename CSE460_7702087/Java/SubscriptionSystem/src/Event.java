@@ -1,4 +1,5 @@
-public class Event {
+public class Event
+{
 
 	private ThreadInfo thread;
 
@@ -9,8 +10,14 @@ public class Event {
 	/**
 	 * Updates threads attribute and availForums attribute in EventPool class.
 	 */
-	public boolean updateEventPool(String publishInfo) {
-		return false;
+	public boolean updateEventPool(String publishInfo)
+	{
+		//Begin
+		boolean succeeded = false;
+		
+		return succeeded;
+		//End
+		//return false;
 	}
 
 }
