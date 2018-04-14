@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /**
  * A User
  */
@@ -14,7 +12,7 @@ public class Publisher {
 	/**
 	 * Uses raw data of post to create an event and send it to EventNotification class
 	 */
-	public String addPost(ArrayList command) {
+	public String[] addPost(String[] command) {
 		return null;
 	}
 

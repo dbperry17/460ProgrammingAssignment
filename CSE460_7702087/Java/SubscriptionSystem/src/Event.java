@@ -9,7 +9,7 @@ public class Event {
 	/**
 	 * Updates threads attribute and availForums attribute in EventPool class.
 	 */
-	public boolean updateEventPool(String publishInfo) {
+	public boolean updateEventPool(String[] publishInfo) {
 		return false;
 	}
 

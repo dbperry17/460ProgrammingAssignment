@@ -1,60 +1,42 @@
-public class EventNotification
-{
+import java.util.ArrayList;
 
-	private Subscriber[] subscribers;
+public class EventNotification {
+
+	private ArrayList subscribers;
 
 	/**
 	 * First index indicates index in availForums attribute in EventPool class.
 	 * 
 	 * Second index lists subscribers in order subscribed.
 	 */
-	private int[][] subscriptions;
+	private ArrayList subscriptions;
 
 	/**
 	 * Attaches a new user as a publisher
 	 */
-	public boolean attachPublisher()
-	{
-		//Begin
-		boolean succeeded = false;
-		
-		return succeeded;
-		//End
-		//return false;
+	public boolean attachPublisher() {
+		return false;
 	}
 
 	/**
 	 * Subscribes a user to a forum
 	 */
-	public boolean attachSubscriber()
-	{
+	public boolean attachSubscriber() {
 		return false;
 	}
 
 	/**
 	 * Calls Notify for Subscriber
 	 */
-	public boolean pushEvent(Event ev)
-	{
-		//Begin
-		boolean succeeded = false;
-		
-		return succeeded;
-		//End
-		//return false;
+	public boolean pushEvent(Event ev) {
+		return false;
 	}
 
 	/**
 	 * Unsubscribes a user to a forum
 	 */
-	public boolean detachSubscriber()
-	{
-		//Begin
-		boolean succeeded = false;
-		
-		return succeeded;
-		//End
-		//return false;
+	public boolean detachSubscriber() {
+		return false;
 	}
 
 }
