@@ -1,0 +1,8 @@
+new forum,Programming Assignment
+Subscribe,Allison Barnes,Programming Assignment
+new post,will boyd,programming assignment,Hints,Check the discussion board.
+subscribe,Carl Denny,Programming Assignment
+new post,Hessam Sarjoughian,Programming Assignment,Hints,Ask questions in class and see us during our office hours.
+new post,Erica Fernandez,Programming Assignment,Design Questions,Do the subscriber objects need to receive notifications?
+Unsubscribe,Carl Denny,Programming Assignment
+new post,Will Boyd,Programming Assignment,Design questions,Yes. If the subscriber objects themselves never receive notifications the publisher-subscriber model is not correctly implemented.

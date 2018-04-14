@@ -1,47 +1,23 @@
-
-//Begin
 import java.util.ArrayList;
-//End
 
-public class EventPool
-{
+public class EventPool {
 
-	// ADDED BY ASTAH
-	// private String availForums[0..*];
-	// private ThreadInfo[] threads;
+	private ArrayList availForums;
 
-	// Begin
-	private ArrayList<String> availForums = new ArrayList<String>();
-	private ArrayList<ThreadInfo> threads = new ArrayList<ThreadInfo>();
-	// End
+	private ArrayList threads;
 
 	/**
-	 * Adds a post to a thread, updates relevant ThreadInfo, adds the thread to
-	 * threads attribute (if thread does not already exist).
+	 * Adds a post to a thread, updates relevant ThreadInfo, adds the thread to threads attribute (if thread does not already exist).
 	 */
-	public ThreadInfo newPost(String postInfo)
-	{
-		//Begin
-		ThreadInfo thread = new ThreadInfo();
-		
-		
-		
-		return thread;
-		//End
-		// return null;
+	public ThreadInfo newPost(String postInfo) {
+		return null;
 	}
 
 	/**
 	 * Creates a new forum to add to availForums attribute
 	 */
-	public String newForum(String name)
-	{
-		//Begin
-		String ComeUpWithBetterName = "";
-		
-		return ComeUpWithBetterName;
-		//End
-		//return null;
+	public String newForum(String name) {
+		return null;
 	}
 
 	/**
@@ -51,14 +27,8 @@ public class EventPool
 	 * 
 	 * If it does not exist, method returns -1.
 	 */
-	private int searchThreads(String thread, String forum)
-	{
-		//Begin
-		int ThinkOfGoodNameLater = 0;
-		
-		return ThinkOfGoodNameLater;
-		//End
-		//return 0;
+	private int searchThreads(String thread, String forum) {
+		return 0;
 	}
 
 }
