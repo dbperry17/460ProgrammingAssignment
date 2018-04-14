@@ -1,0 +1,3 @@
+Different diagram for main class connecting subscriber and publisher
+Mainclass can store publishers and subscribers, as long as publishers don't know subscribers.
+Maybe rework how posts are stored (depends on how things go as I work)
