@@ -114,6 +114,41 @@ public class EventNotification
 	{
 		//Begin
 		boolean succeeded = false;
+		boolean unsubbed = false;
+		int index = searchSubscribers(user);
+		Subscriber sub;
+
+		//Does the subscriber exist?
+		if (index != -1)
+		{
+			//If so, get them, and continue
+			sub = subscribers.get(index);
+			
+			int forNum = pool.searchForums(forum);
+			//Does the forum exist?
+			if (forNum != -1)
+			{
+				//If so, take forum off subscriber's list and continue 
+				unsubbed = sub.unsubscribe(forum);
+	
+				//Did the user get subscribed?
+				if (unsubbed)
+				{
+					//If so, check if that forum is in list of subscriptions
+					if (subscriptions.containsKey(forum))
+					{
+						//If so, check if user is in that forum's list of subscribers
+						if (checkSubs(sub, forum))
+						{
+							//If so, remove subscriber from list
+							subscriptions.get(forum).remove(sub);
+							succeeded = true;
+						}
+					}
+				}
+			}
+		}
+		//No one cares about any other cases
 
 		return succeeded;
 		//End
@@ -132,7 +167,9 @@ public class EventNotification
 		for (int i = 1; i < subscribers.size(); i++)
 			if (subscribers.get(i).getName().equalsIgnoreCase(user))
 				index = i;
+		
 
+		
 		return index;
 		//End
 		//return 0;

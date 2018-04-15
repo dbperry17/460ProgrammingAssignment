@@ -55,12 +55,21 @@ public class Subscriber
 	}
 
 	/**
-	 * Calls detachSubscriber, adds forum to forums attribute
+	 * Calls detachSubscriber, deletes forum to forums attribute
 	 */
 	public boolean unsubscribe(String forum)
 	{
 		//Begin
 		boolean succeeded = false;
+		int index = getSubscription(forum);
+		
+		//Was the user subscribed?
+		if(index != -1)
+		{
+			//If so, remove from list
+			forums.remove(index);
+			succeeded = true;
+		}
 		
 		return succeeded;
 		//End
