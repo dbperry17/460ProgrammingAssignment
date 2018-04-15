@@ -37,9 +37,9 @@ public class Subscriber
 		//Posts in thread: [number of posts].
 		String output = "Sent to " + username + ": A new post was added by " + ev.getPoster() + " in " +
 						ev.getThread().getForum() + ": " + ev.getThread().getTitle() +
-						". Posts in thread: " + ev.getThread().getNumPosts();
+						". Posts in thread: " + ev.getThread().getNumPosts() + ".";
 		
-		System.out.print(output);
+		System.out.print(output.toLowerCase());
 		
 		
 		return succeeded;

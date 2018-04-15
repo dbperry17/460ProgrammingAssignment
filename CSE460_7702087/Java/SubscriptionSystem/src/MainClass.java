@@ -16,7 +16,7 @@ public class MainClass
 	public static void main(String[] args)
 	{
 		// Begin
-		String command = "";
+		String command;
 		Publisher admin = new Publisher("admin"); //for new forums
 		publishers.add(admin);
 
@@ -28,27 +28,32 @@ public class MainClass
 		 * 		unsubscribe,[user name],[forum name]
 		 */
 
-		while (!(command = kb.nextLine()).isEmpty())
+		while (kb.hasNextLine())
 		{
-			String[] parsed = parseCommand(command);
-
-			if (parsed[0].equalsIgnoreCase("new forum"))
-				newForum(parsed[1]);
-			else if (parsed[0].equalsIgnoreCase("new post"))
-				newPost(parsed);
-			else if (parsed[0].equalsIgnoreCase("Subscribe"))
-				subscribe(parsed);
-			else if (parsed[0].equalsIgnoreCase("Unsubscribe"))
-				unsubscribe(parsed);
-			else
+			if (!(command = kb.nextLine()).isEmpty())
 			{
-				// Note to self: Line below for test purposes only
-				// Do not change, as unsuccessful commands are supposed
-				// to return no error message
-				
-				if(testing)
-					System.out.println("Command not recognized");
+				String[] parsed = parseCommand(command);
+
+				if (parsed[0].equalsIgnoreCase("new forum"))
+					newForum(parsed[1]);
+				else if (parsed[0].equalsIgnoreCase("new post"))
+					newPost(parsed);
+				else if (parsed[0].equalsIgnoreCase("Subscribe"))
+					subscribe(parsed);
+				else if (parsed[0].equalsIgnoreCase("Unsubscribe"))
+					unsubscribe(parsed);
+				else
+				{
+					// Note to self: Line below for test purposes only
+					// Do not change, as unsuccessful commands are supposed
+					// to return no error message
+
+					if (testing)
+						System.out.println("Command not recognized");
+				}
 			}
+			else
+				break;
 		}
 		// End
 	}
@@ -56,15 +61,15 @@ public class MainClass
 	private static void newForum(String command)
 	{
 		// Begin	
-		if(publishers.get(0).addForum(command))
+		if (publishers.get(0).addForum(command))
 		{
 			//No output should be printed if not testing
-			if(testing)
+			if (testing)
 				System.out.println("New forum created: " + command);
 		}
 
-		
-		
+
+
 		// End
 	}
 
@@ -77,14 +82,14 @@ public class MainClass
 		//3:	[thread title]
 		//4:	[post text]
 		Publisher pub = new Publisher(command[1]);
-		
-		if(pub.addPost(command))
+
+		if (pub.addPost(command))
 		{
 			System.out.println("success?");
 			//Sent to [subscriber name]: A new post was added by [author name] in [forum name]: [thread title].
 			//Posts in thread: [number of posts].
 		}
-		
+
 
 		// End
 	}
@@ -93,10 +98,10 @@ public class MainClass
 	{
 		// Begin		
 		EventNotification evNote = new EventNotification();
-		if(evNote.attachSubscriber(command[1], command[2]))
+		if (evNote.attachSubscriber(command[1], command[2]))
 		{
 			//No output should be printed if not testing
-			if(testing)
+			if (testing)
 				System.out.println("User " + command[1] + " subscribed to " + command[2]);
 		}
 
@@ -107,14 +112,14 @@ public class MainClass
 	{
 		// Begin		
 		EventNotification evNote = new EventNotification();
-		if(evNote.detachSubscriber(command[1], command[2]))
+		if (evNote.detachSubscriber(command[1], command[2]))
 		{
 			//No output should be printed if not testing
-			if(testing)
+			if (testing)
 				System.out.println("User " + command[1] + " unsubscribed to " + command[2]);
 		}
-		
-		
+
+
 		// End
 	}
 
@@ -124,7 +129,7 @@ public class MainClass
 	private static String[] parseCommand(String command)
 	{
 		//Begin
-		
+
 		// Help on splitting Strings:
 		// https://stackoverflow.com/questions/3481828/how-to-split-a-string-in-java
 
