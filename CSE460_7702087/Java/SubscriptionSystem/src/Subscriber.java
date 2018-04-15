@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class Subscriber
 {
-
 	//private ArrayList forums;
 
 	//Begin
@@ -12,6 +11,7 @@ public class Subscriber
 	private String username;
 	private EventNotification eventNotification;
 	private Event[] event;
+	private static boolean firstEvent = false;
 	
 	//Begin
 	/**
@@ -24,10 +24,23 @@ public class Subscriber
 	}
 	//End
 
-	public boolean Notify()
+	public boolean Notify(Event ev)
 	{
 		//Begin
 		boolean succeeded = false;
+		
+		if(firstEvent)
+			System.out.print(";");
+		
+		firstEvent = true;
+		//Sent to [subscriber name]: A new post was added by [author name] in [forum name]: [thread title].
+		//Posts in thread: [number of posts].
+		String output = "Sent to " + username + ": A new post was added by " + ev.getPoster() + " in " +
+						ev.getThread().getForum() + ": " + ev.getThread().getTitle() +
+						". Posts in thread: " + ev.getThread().getNumPosts();
+		
+		System.out.print(output);
+		
 		
 		return succeeded;
 		//End

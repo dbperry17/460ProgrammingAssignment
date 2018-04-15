@@ -85,8 +85,8 @@ public class EventNotification
 			{
 				//If not, add subscriber to list
 				subscriptions.get(forum).add(sub);
-				succeeded = true;
 			}
+			succeeded = true;
 		}
 
 		return succeeded;
@@ -95,12 +95,24 @@ public class EventNotification
 	}
 
 	/**
-	 * Calls Notify for Subscriber
+	 * Calls Notify for Subscribers
 	 */
 	public boolean pushEvent(Event ev)
 	{
 		//Begin
 		boolean succeeded = false;
+		boolean loopCheck = true;
+		
+		for(Subscriber s : subscribers)
+		{
+			if(!s.Notify(ev))
+			{
+				loopCheck = false;
+			}
+		}
+		
+		if(loopCheck)
+			succeeded = true;
 
 		return succeeded;
 		//End

@@ -3,14 +3,12 @@ import java.util.ArrayList;
 
 public class MainClass
 {
-
-	private static boolean firstEvent = false;
 	private static Scanner kb = new Scanner(System.in);
 	//private static ArrayList publishers = new ArrayList<Publisher>();
 
 	//Begin
 	private static ArrayList<Publisher> publishers = new ArrayList<Publisher>();
-	private static boolean testing = true;
+	private static boolean testing = false;
 	//"testing" variable not shown on class diagram as it's for testing only,
 	//and is not actually part of the design
 	//End
@@ -51,7 +49,6 @@ public class MainClass
 				if(testing)
 					System.out.println("Command not recognized");
 			}
-			firstEvent = true;
 		}
 		// End
 	}
@@ -63,7 +60,7 @@ public class MainClass
 		{
 			//No output should be printed if not testing
 			if(testing)
-				System.out.print("New forum created: " + command);
+				System.out.println("New forum created: " + command);
 		}
 
 		
@@ -73,11 +70,19 @@ public class MainClass
 
 	private static void newPost(String[] command)
 	{
-		// Begin		
-		if(true)
+		// Begin
+		//0:	new post
+		//1:	[user name]
+		//2:	[forum name]
+		//3:	[thread title]
+		//4:	[post text]
+		Publisher pub = new Publisher(command[1]);
+		
+		if(pub.addPost(command))
 		{
-			if(firstEvent)
-				System.out.print(";");
+			System.out.println("success?");
+			//Sent to [subscriber name]: A new post was added by [author name] in [forum name]: [thread title].
+			//Posts in thread: [number of posts].
 		}
 		
 

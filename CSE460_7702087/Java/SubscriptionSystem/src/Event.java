@@ -5,9 +5,10 @@ public class Event
 	private String poster;
 	
 	//Begin
-	public Event()
+	public Event(String poster, ThreadInfo thread)
 	{
-		
+		this.poster = poster;
+		this.thread = thread;
 	}
 	//End
 
@@ -20,5 +21,16 @@ public class Event
 		//End
 		//return false;
 	}
-
+	
+	//Begin
+	public String getPoster()
+	{
+		return poster;
+	}
+	
+	public ThreadInfo getThread()
+	{
+		return thread;
+	}
+	//End
 }

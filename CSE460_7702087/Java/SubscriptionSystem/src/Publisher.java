@@ -6,27 +6,38 @@ public class Publisher
 	 */
 	private String username;
 	private EventNotification evNote;
-	private Event[] event;
+	//private Event[] event;
 	private static EventPool pool;
 
 	//Begin	
+	private Event event; //I only need one
+	
 	public Publisher(String name)
 	{
 		this.username = name;
 		pool = EventPool.getPool();
+		evNote = new EventNotification(); 
 	}
 	//End
 
 	/**
-	 * Uses command parametert to create an event and calls pushEvent() in
+	 * Uses command parameters to create an event and calls pushEvent() in
 	 * EventNotification class.
 	 */
-	public String[] addPost(String[] command)
+	public boolean addPost(String[] command)
 	{
 		//Begin
-		String[] post = {};
+		boolean succeeded = false;
 		
-		return post;
+		ThreadInfo thread = pool.newPost(command);
+		if(thread != null)
+		{
+			event = new Event(username, thread);
+			if(evNote.pushEvent(event))
+				succeeded = true;
+		}
+		
+		return succeeded;
 		//End
 		//return null;
 	}
