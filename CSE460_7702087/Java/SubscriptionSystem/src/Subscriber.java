@@ -20,6 +20,7 @@ public class Subscriber
 	public Subscriber(String name)
 	{
 		this.username = name;
+		forums = new ArrayList<String>();
 	}
 	//End
 

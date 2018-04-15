@@ -44,9 +44,9 @@ public class EventNotification
 		boolean subbed = false;
 		int index = searchSubscribers(user);
 		Subscriber sub;
-		
+
 		//Does the subscriber exist?
-		if(index == -1)
+		if (index == -1)
 		{
 			//If not, add to list of subscribers
 			sub = new Subscriber(user);
@@ -55,26 +55,40 @@ public class EventNotification
 		}
 		else
 			sub = subscribers.get(index);
-		
+
 		int forNum = pool.searchForums(forum);
-		
+
 		//Does the forum exist?
-		if(forNum == -1)
+		if (forNum == -1)
 		{
 			//If not, do nothing
 		}
 		else
-			subbed = sub.subscribe(forum);
-		
-		//Did the user get subscribed?
-		if(index != -1 && forNum != -1 && subbed)
 		{
-			//If so, add it to the list of that forums's subscribers
-			
-			
-			succeeded = true;
+			subbed = sub.subscribe(forum);
 		}
-		
+
+		//Did the user get subscribed?
+		if (index != -1 && forNum != -1 && subbed)
+		{
+			//If so, check if that forum is in list of subscriptions
+			if (!subscriptions.containsKey(forum))
+			{
+				//If not, add forum and new subscriber to list
+				ArrayList<Subscriber> temp = new ArrayList<Subscriber>();
+				temp.add(sub);
+				
+				subscriptions.put(forum, temp);
+			}
+			//Else, check if user is in that forum's list of subscribers
+			else if (!checkSubs(sub, forum))
+			{
+				//If not, add subscriber to list
+				subscriptions.get(forum).add(sub);
+				succeeded = true;
+			}
+		}
+
 		return succeeded;
 		//End
 		//return false;
@@ -94,43 +108,13 @@ public class EventNotification
 	}
 
 	/**
-	 * Subscribes a user to a forum
+	 * Unsubscribes a user to a forum
 	 */
 	public boolean detachSubscriber(String user, String forum)
 	{
 		//Begin
 		boolean succeeded = false;
-		boolean unsubbed = false;
-		int index = searchSubscribers(user);
-		Subscriber sub;
-		
-		//Does the subscriber exist?
-		if(index == -1)
-		{
-			//If not, add to list of subscribers
-			//
-			sub = new Subscriber(user);
-			subscribers.add(sub);
-			index = subscribers.size() - 1;
-			return false; //No sense in checking anything else
-		}
-		else
-			sub = subscribers.get(index);
-		
-		int forNum = pool.searchForums(forum);
-		
-		//Does the forum exist?
-		if(forNum == -1)
-		{
-			//If not, do nothing
-		}
-		else
-			unsubbed = sub.subscribe(forum);
-		
-		//Did the user get subscribed?
-		if(index != -1 && forNum != -1 && unsubbed)
-			succeeded = true;
-		
+
 		return succeeded;
 		//End
 		//return false;
@@ -143,27 +127,31 @@ public class EventNotification
 	{
 		//Begin
 		int index = -1;
-		
+
 		//Starts at 1 because 0 is used up automatically by me
-		for(int i = 1; i < subscribers.size(); i++)
-			if(subscribers.get(i).getName().equalsIgnoreCase(user))
+		for (int i = 1; i < subscribers.size(); i++)
+			if (subscribers.get(i).getName().equalsIgnoreCase(user))
 				index = i;
-		
+
 		return index;
 		//End
 		//return 0;
 	}
-	
-	
-	private boolean checkSubs(Subscriber user)
+
+
+	private boolean checkSubs(Subscriber user, String forum)
 	{
 		//Begin
 		boolean found = false;
-		
+
+		ArrayList<Subscriber> undyne = subscriptions.get(forum);
+		if (undyne.contains(user))
+			found = true;
+
 		return found;
 		//End
 		//return false;
-		
+
 	}
 
 }

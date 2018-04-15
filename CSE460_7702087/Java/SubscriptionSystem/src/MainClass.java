@@ -58,16 +58,12 @@ public class MainClass
 
 	private static void newForum(String command)
 	{
-		// Begin
-		
-		if(firstEvent)
-			System.out.println(";");
-		
+		// Begin	
 		if(publishers.get(0).addForum(command))
 		{
 			//No output should be printed if not testing
 			if(testing)
-				System.out.println("New forum created: " + command);
+				System.out.print("New forum created: " + command);
 		}
 
 		
@@ -77,13 +73,12 @@ public class MainClass
 
 	private static void newPost(String[] command)
 	{
-		// Begin
-		if(firstEvent)
-			System.out.println(";");
-		
-		//Test
-		for(int i = 0; i < command.length; i++)
-			System.out.println(command[i]);
+		// Begin		
+		if(true)
+		{
+			if(firstEvent)
+				System.out.print(";");
+		}
 		
 
 		// End
@@ -91,10 +86,7 @@ public class MainClass
 
 	private static void subscribe(String[] command)
 	{
-		// Begin
-		if(firstEvent)
-			System.out.println(";");
-		
+		// Begin		
 		EventNotification evNote = new EventNotification();
 		if(evNote.attachSubscriber(command[1], command[2]))
 		{
@@ -108,10 +100,7 @@ public class MainClass
 
 	private static void unsubscribe(String[] command)
 	{
-		// Begin
-		if(firstEvent)
-			System.out.println(";");
-		
+		// Begin		
 		EventNotification evNote = new EventNotification();
 		if(evNote.detachSubscriber(command[1], command[2]))
 		{
