@@ -2,21 +2,25 @@ import java.util.ArrayList;
 
 public class EventNotification
 {
-	//private ArrayList subscribers;
+
+	//private static ArrayList subscribers = new ArrayList<Subscriber>();
+
 	/**
 	 * First index indicates index in availForums attribute in EventPool class.
 	 * 
 	 * Second index lists subscribers in order subscribed.
 	 */
-	//private ArrayList subscriptions;
+	//private static ArrayList subscriptions = new <ArrayList<Integer>>();
 
 	//Begin
-	private ArrayList<Subscriber> subscribers;
+	private ArrayList<Subscriber> subscribers = new ArrayList<Subscriber>();;
 
 	// First index indicates index in availForums attribute in EventPool class. 
 	// Second index lists subscribers in order subscribed.
-	private ArrayList<ArrayList<Integer>> subscriptions;
+	private ArrayList<ArrayList<Integer>> subscriptions = new ArrayList<ArrayList<Integer>>();
 	//End
+
+	private Event event;
 
 	/**
 	 * Attaches a new user as a publisher
@@ -69,4 +73,5 @@ public class EventNotification
 		//End
 		//return false;
 	}
+
 }

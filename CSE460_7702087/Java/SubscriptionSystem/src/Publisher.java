@@ -1,22 +1,25 @@
-/**
- * A User
- */
 public class Publisher
 {
+
+	/**
+	 * name of publisher
+	 */
 	private String username;
 	private EventNotification evNote;
 	private Event[] event;
+	private static EventPool pool;
 
 	//Begin	
 	public Publisher(String name)
 	{
 		this.username = name;
+		pool = EventPool.getPool();
 	}
 	//End
 
 	/**
-	 * Uses raw data of post to create an event and send it to EventNotification
-	 * class
+	 * Uses command parametert to create an event and calls pushEvent() in
+	 * EventNotification class.
 	 */
 	public String[] addPost(String[] command)
 	{
@@ -28,14 +31,15 @@ public class Publisher
 		//return null;
 	}
 
+	/**
+	 * Adds a forum
+	 */
 	public boolean addForum(String forum)
 	{
 		//Begin
 		boolean succeeded = false;
-		
-		evNote = new EventNotification();
-		evNote.getEvent().updateEventPool(forum);
-		
+		pool.newForum(forum);
+		succeeded = true;
 		
 		return succeeded;
 		//End

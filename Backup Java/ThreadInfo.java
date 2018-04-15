@@ -24,5 +24,4 @@ public class ThreadInfo
 		//End
 		//return false;
 	}
-
 }

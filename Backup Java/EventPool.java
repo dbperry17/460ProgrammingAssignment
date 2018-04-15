@@ -2,19 +2,30 @@ import java.util.ArrayList;
 
 public class EventPool
 {
+
 	//private ArrayList availForums;
 	//private ArrayList threads;
-	
+	private static EventPool pool;
+
 	//Begin
-	private ArrayList<String> availForums;
-	private ArrayList<ThreadInfo> threads;
-	
-	public EventPool()
-	{
-		availForums = new ArrayList<String>();
-		threads = new ArrayList<ThreadInfo>();
-	}
+	private ArrayList<String> availForums = new ArrayList<String>();
+	private ArrayList<ThreadInfo> threads = new ArrayList<ThreadInfo>();
 	//End
+
+	private EventPool()
+	{
+
+	}
+
+	public static EventPool getPool()
+	{
+		//Begin
+		if (pool == null)
+			pool = new EventPool();
+		return pool;
+		//End
+		//return null;
+	}
 
 	/**
 	 * Adds a post to a thread, updates relevant ThreadInfo, adds the thread to
@@ -24,7 +35,7 @@ public class EventPool
 	{
 		//Begin
 		ThreadInfo thread = new ThreadInfo();
-		
+
 		return thread;
 		//End
 		//return null;
@@ -33,14 +44,16 @@ public class EventPool
 	/**
 	 * Creates a new forum to add to availForums attribute
 	 */
-	public String newForum(String name)
+	public boolean newForum(String name)
 	{
 		//Begin
-		String forum = "";
+		boolean succeeded = false;
+		availForums.add(name);
+		succeeded = true;
 		
-		return forum;
+		return succeeded;
 		//End
-		//return null;
+		//return false;
 	}
 
 	/**
@@ -54,7 +67,7 @@ public class EventPool
 	{
 		//Begin
 		int threadNum = 0;
-		
+
 		return threadNum;
 		//End
 		//return 0;

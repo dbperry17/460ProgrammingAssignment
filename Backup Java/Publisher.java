@@ -1,27 +1,25 @@
-/**
- * A User
- */
 public class Publisher
 {
-	private String username;
-	//private EventNotification eventNotification;
-	private Event[] event;
 
-	//Begin
+	/**
+	 * name of publisher
+	 */
+	private String username;
 	private EventNotification evNote;
-	//Astah named it automatically as it was generated due to association
-	//I had no way to change the name in Astah, so I had to rename it here
-	
+	private Event[] event;
+	private static EventPool pool;
+
+	//Begin	
 	public Publisher(String name)
 	{
-		username = name;
+		this.username = name;
+		pool = EventPool.getPool();
 	}
 	//End
-	
-	
+
 	/**
-	 * Uses raw data of post to create an event and send it to EventNotification
-	 * class
+	 * Uses command parametert to create an event and calls pushEvent() in
+	 * EventNotification class.
 	 */
 	public String[] addPost(String[] command)
 	{
@@ -32,14 +30,16 @@ public class Publisher
 		//End
 		//return null;
 	}
-	
+
+	/**
+	 * Adds a forum
+	 */
 	public boolean addForum(String forum)
 	{
 		//Begin
 		boolean succeeded = false;
-		
-		eventNotification = new EventNotification();
-		
+		pool.newForum(forum);
+		succeeded = true;
 		
 		return succeeded;
 		//End

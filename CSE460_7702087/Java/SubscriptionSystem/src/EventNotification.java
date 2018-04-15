@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class EventNotification
 {
-
 	//private static ArrayList subscribers = new ArrayList<Subscriber>();
 
 	/**
@@ -22,6 +21,15 @@ public class EventNotification
 
 	private Event event;
 
+	private static EventPool pool;
+	
+	//Begin
+	public EventNotification()
+	{
+		
+	}
+	//End
+
 	/**
 	 * Attaches a new user as a publisher
 	 */
@@ -38,7 +46,7 @@ public class EventNotification
 	/**
 	 * Subscribes a user to a forum
 	 */
-	public boolean attachSubscriber()
+	public boolean attachSubscriber(Subscriber user, String forum)
 	{
 		//Begin
 		boolean succeeded = false;
@@ -62,9 +70,9 @@ public class EventNotification
 	}
 
 	/**
-	 * Unsubscribes a user to a forum
+	 * Subscribes a user to a forum
 	 */
-	public boolean detachSubscriber()
+	public boolean detachSubscriber(Subscriber user, String forum)
 	{
 		//Begin
 		boolean succeeded = false;
@@ -73,12 +81,5 @@ public class EventNotification
 		//End
 		//return false;
 	}
-	
-	//Begin
-	public Event getEvent()
-	{
-		return this.event;
-	}
-	//End
 
 }

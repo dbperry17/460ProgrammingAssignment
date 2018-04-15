@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Subscriber
 {
+
 	//private ArrayList forums;
 
 	//Begin
