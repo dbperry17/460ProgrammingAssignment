@@ -95,9 +95,14 @@ public class MainClass
 		if(firstEvent)
 			System.out.println(";");
 		
-		//Test
-		for(int i = 0; i < command.length; i++)
-			System.out.println(command[i]);
+		EventNotification evNote = new EventNotification();
+		if(evNote.attachSubscriber(command[1], command[2]))
+		{
+			//No output should be printed if not testing
+			if(testing)
+				System.out.println("User " + command[1] + " subscribed to " + command[2]);
+		}
+
 		// End
 	}
 
@@ -107,9 +112,13 @@ public class MainClass
 		if(firstEvent)
 			System.out.println(";");
 		
-		//Test
-		for(int i = 0; i < command.length; i++)
-			System.out.println(command[i]);
+		EventNotification evNote = new EventNotification();
+		if(evNote.detachSubscriber(command[1], command[2]))
+		{
+			//No output should be printed if not testing
+			if(testing)
+				System.out.println("User " + command[1] + " unsubscribed to " + command[2]);
+		}
 		
 		
 		// End

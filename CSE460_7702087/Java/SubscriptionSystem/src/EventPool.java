@@ -31,10 +31,10 @@ public class EventPool
 	 * Adds a post to a thread, updates relevant ThreadInfo, adds the thread to
 	 * threads attribute (if thread does not already exist).
 	 */
-	public ThreadInfo newPost(String postInfo)
+	public ThreadInfo newPost(String[] postInfo)
 	{
 		//Begin
-		ThreadInfo thread = new ThreadInfo();
+		ThreadInfo thread = new ThreadInfo(postInfo[1], postInfo[2]);
 
 		return thread;
 		//End

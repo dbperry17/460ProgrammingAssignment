@@ -9,6 +9,15 @@ public class ThreadInfo
 
 	//Begin
 	private ArrayList<Post> posts;
+	
+	/**
+	 * Constructor
+	 */
+	public ThreadInfo(String forum, String title)
+	{
+		this.forum = forum;
+		this.title = title;
+	}
 	//End
 
 	/**
