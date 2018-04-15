@@ -4,17 +4,36 @@ public class Event {
 
 	private String poster;
 
-	private EventPool events;
+	private static EventPool eventPool = new EventPool();
 
+	//Begin
+	public Event()
+	{
+		
+	}
+	//End
+	
+	
 	/**
 	 * Updates threads attribute and availForums attribute in EventPool class.
 	 */
-	public boolean updateEventPool(String publishInfo) {
-		return false;
+	public boolean updateEventPool(String publishInfo)
+	{
+		//Begin
+		boolean succeeded = false;
+
+		return succeeded;
+		//End
+		//return false;
 	}
 
-	public boolean printOutput() {
-		return false;
-	}
+	public boolean printOutput()
+	{
+		//Begin
+		boolean succeeded = false;
 
+		return succeeded;
+		//End
+		//return false;
+	}
 }

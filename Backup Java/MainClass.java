@@ -3,12 +3,13 @@ import java.util.ArrayList;
 
 public class MainClass
 {
-
 	private static boolean firstEvent;
-
 	private static Scanner kb;
-
-	private static ArrayList publishers;
+	//private static ArrayList publishers;
+	
+	//Begin
+	private static ArrayList<Publisher> publishers;
+	//End
 
 	public static void main(String[] args)
 	{
@@ -17,6 +18,8 @@ public class MainClass
 		publishers = new ArrayList<Publisher>();
 		firstEvent = false;
 		String command = "";
+		Publisher admin = new Publisher("admin"); //for new forums
+		publishers.add(admin);
 
 		/*
 		 * Commands:
@@ -44,8 +47,10 @@ public class MainClass
 				// Do not change, as unsuccessful commands are supposed
 				// to return no error message
 				
+				//TODO: Comment this out
 				System.out.println("Command not recognized");
 			}
+			firstEvent = true;
 		}
 		// End
 	}
@@ -54,9 +59,13 @@ public class MainClass
 	{
 		// Begin
 		boolean succeeded = false;
+		
+		if(firstEvent)
+			System.out.println(";");
+		
+		publishers[0].
 
-		//Test
-		System.out.println("New Forum: " + command);
+		
 		
 		return succeeded;
 		// End
@@ -67,6 +76,8 @@ public class MainClass
 	{
 		// Begin
 		boolean succeeded = false;
+		if(firstEvent)
+			System.out.println(";");
 		
 		//Test
 		for(int i = 0; i < command.length; i++)
@@ -81,6 +92,8 @@ public class MainClass
 	{
 		// Begin
 		boolean succeeded = false;
+		if(firstEvent)
+			System.out.println(";");
 
 		//Test
 		for(int i = 0; i < command.length; i++)
@@ -95,6 +108,8 @@ public class MainClass
 	{
 		// Begin
 		boolean succeeded = false;
+		if(firstEvent)
+			System.out.println(";");
 
 		//Test
 		for(int i = 0; i < command.length; i++)

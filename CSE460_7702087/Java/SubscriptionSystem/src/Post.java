@@ -1,7 +1,8 @@
 /**
  * Keeps track of the posts for use in extra credit (just in case).
  */
-public class Post {
+public class Post
+{
 
 	private String username;
 
