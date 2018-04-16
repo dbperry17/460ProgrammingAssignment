@@ -9,7 +9,7 @@ public class ThreadInfo
 
 	//Begin
 	private ArrayList<Post> posts;
-	
+
 	/**
 	 * Constructor
 	 */

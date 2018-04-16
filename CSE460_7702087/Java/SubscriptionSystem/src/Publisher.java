@@ -1,22 +1,19 @@
 public class Publisher
 {
-
 	/**
 	 * name of publisher
 	 */
 	private String username;
-	private EventNotification evNote;
+	private static Broker broker;
 	//private Event[] event;
-	private static EventPool pool;
-
+	
 	//Begin	
 	private Event event; //I only need one
 	
 	public Publisher(String name)
 	{
 		this.username = name;
-		pool = EventPool.getPool();
-		evNote = new EventNotification(); 
+		broker = Broker.getBroker();
 	}
 	//End
 
@@ -29,17 +26,17 @@ public class Publisher
 		//Begin
 		boolean succeeded = false;
 		
-		ThreadInfo thread = pool.newPost(command);
+		ThreadInfo thread = broker.newPost(command);
 		if(thread != null)
 		{
 			event = new Event(username, thread);
-			if(evNote.pushEvent(event))
+			if(broker.pushEvent(event))
 				succeeded = true;
 		}
 		
 		return succeeded;
 		//End
-		//return null;
+		//return false;
 	}
 
 	/**
@@ -49,7 +46,7 @@ public class Publisher
 	{
 		//Begin
 		boolean succeeded = false;
-		pool.newForum(forum);
+		broker.newForum(forum);
 		succeeded = true;
 		
 		return succeeded;

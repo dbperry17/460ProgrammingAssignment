@@ -3,17 +3,14 @@ import java.util.ArrayList;
 public class Subscriber
 {
 	//private ArrayList forums;
-
-	//Begin
-	private ArrayList<String> forums;
-	//End
-
 	private String username;
-	private EventNotification eventNotification;
-	private Event[] event;
 	private static boolean firstEvent = false;
+	private Broker broker;
+	private Event[] event;
 	
 	//Begin
+	private ArrayList<String> forums;
+	
 	/**
 	 * Constructor
 	 */
@@ -21,6 +18,7 @@ public class Subscriber
 	{
 		this.username = name;
 		forums = new ArrayList<String>();
+		broker = Broker.getBroker();
 	}
 	//End
 
@@ -39,7 +37,7 @@ public class Subscriber
 						ev.getThread().getForum() + ": " + ev.getThread().getTitle() +
 						". Posts in thread: " + ev.getThread().getNumPosts() + ".";
 		
-		System.out.print(output.toLowerCase());
+		System.out.print(output);
 		
 		
 		return succeeded;
@@ -88,19 +86,13 @@ public class Subscriber
 		//End
 		//return false;
 	}
-	
-	//Begin
-	public String getName()
-	{
-		return this.username;
-	}
-	
+
 	/**
 	 * Returns index of forum in forums ArrayList attribute.
 	 * 
 	 * If the forum searched for is not listed, returns -1.
 	 */
-	public int getSubscription(String forum)
+	private int getSubscription(String forum)
 	{
 		//Begin
 		int index = -1;
@@ -113,6 +105,12 @@ public class Subscriber
 		return index;
 		//End
 		//return 0;
+	}
+	
+	//Begin
+	public String getName()
+	{
+		return this.username;
 	}
 	//End
 

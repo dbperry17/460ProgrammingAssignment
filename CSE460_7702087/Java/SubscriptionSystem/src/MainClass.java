@@ -5,6 +5,7 @@ public class MainClass
 {
 	private static Scanner kb = new Scanner(System.in);
 	//private static ArrayList publishers = new ArrayList<Publisher>();
+	private static Broker broker;
 
 	//Begin
 	private static ArrayList<Publisher> publishers = new ArrayList<Publisher>();
@@ -19,6 +20,7 @@ public class MainClass
 		String command;
 		Publisher admin = new Publisher("admin"); //for new forums
 		publishers.add(admin);
+		broker = Broker.getBroker();
 
 		/*
 		 * Commands:
@@ -67,9 +69,6 @@ public class MainClass
 			if (testing)
 				System.out.println("New forum created: " + command);
 		}
-
-
-
 		// End
 	}
 
@@ -89,37 +88,30 @@ public class MainClass
 			//Sent to [subscriber name]: A new post was added by [author name] in [forum name]: [thread title].
 			//Posts in thread: [number of posts].
 		}
-
-
 		// End
 	}
 
 	private static void subscribe(String[] command)
 	{
 		// Begin		
-		EventNotification evNote = new EventNotification();
-		if (evNote.attachSubscriber(command[1], command[2]))
+		if (broker.attachSubscriber(command[1], command[2]))
 		{
 			//No output should be printed if not testing
 			if (testing)
 				System.out.println("User " + command[1] + " subscribed to " + command[2]);
 		}
-
 		// End
 	}
 
 	private static void unsubscribe(String[] command)
 	{
 		// Begin		
-		EventNotification evNote = new EventNotification();
-		if (evNote.detachSubscriber(command[1], command[2]))
+		if (broker.detachSubscriber(command[1], command[2]))
 		{
 			//No output should be printed if not testing
 			if (testing)
 				System.out.println("User " + command[1] + " unsubscribed to " + command[2]);
 		}
-
-
 		// End
 	}
 
@@ -160,9 +152,13 @@ public class MainClass
 			splitCommand = new String[1];
 			splitCommand[0] = "Error";
 		}
+		
+		for(int i = 1; i < splitCommand.length; i++)
+			splitCommand[i] = splitCommand[i].toLowerCase();
 
 		return splitCommand;
 		//End
+		//return null;
 	}
 
 }
